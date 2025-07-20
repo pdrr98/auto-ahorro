@@ -1,10 +1,10 @@
 package com.aladin.auto_ahorro.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class Invalid_Transaction extends Transaction {
-    @Getter
-    @Setter
     String message;
 }

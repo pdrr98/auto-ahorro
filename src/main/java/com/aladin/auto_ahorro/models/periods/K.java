@@ -2,13 +2,11 @@ package com.aladin.auto_ahorro.models.periods;
 
 import java.util.Date;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-@Data
-@Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class K {
     Date start;
     Date end;

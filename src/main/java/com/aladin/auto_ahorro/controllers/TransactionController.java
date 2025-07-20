@@ -1,33 +1,37 @@
 package com.aladin.auto_ahorro.controllers;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aladin.auto_ahorro.models.Bill;
 import com.aladin.auto_ahorro.models.Transaction;
-import jakarta.validation.Valid;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
-import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.aladin.auto_ahorro.service.TransactionService;
 
 @RestController
-@RequestMapping("/blackrock/challenge/v1/transactions")
 @Controller
 public class TransactionController {
 
-    @GetMapping(":parse")
-    public List<Transaction> getTransactions(@RequestBody @Valid List<Bill> billList) {
-        for (Bill bill : billList) {
+    @Autowired
+    TransactionService transactionService;
 
-        }
-        return null;
+    @GetMapping("/blackrock/challenge/v1/transactions:parse")
+    public List<Transaction> getTransactions(@RequestBody List<Bill> billList) {
+        return transactionService.convertBillsToTransactions(billList);
     }
 
-    @GetMapping("path")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+    @GetMapping("/blackrock/challenge/v1/transactions:validator")
+    public ResponseEntity<Map<String, Object>> getMethodName(@RequestBody Map<String, Object> request) {
+        // totalAmountToInvest
+        // wage
+        // TransactonsList
+        return null;
     }
 
 }

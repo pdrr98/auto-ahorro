@@ -2,41 +2,21 @@ package com.aladin.auto_ahorro.models;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 @AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Getter
-    @Setter
-    @Column(name = "date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     Date date;
-
-    @Getter
-    @Setter
-    @Column(name = "amount")
+    @JsonFormat
     Double amount;
-
-    @Getter
-    @Setter
-    @Column(name = "ceiling")
+    @JsonFormat
     Double ceiling;
-
-    @Getter
-    @Setter
-    @Column(name = "remanent")
+    @JsonFormat
     Double remanent;
 }
